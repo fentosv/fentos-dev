@@ -1,0 +1,39 @@
+import React from 'react'
+
+import s from './Footer.module.scss'
+import GitHub from '@components/icons/GitHub';
+import { useRouter } from 'next/router';
+
+
+const footerContent = {
+    "en-US": {
+        description: "Developed by"
+    },
+    "es-ES": {
+        description: "Desarrollado por"
+    }
+};
+
+function Footer() {
+    const router = useRouter()
+    const { pathname, asPath, query, locale, locales, defaultLocale } = router
+
+    const t = locale === 'es-ES' ? 'es-ES' : 'en-US';
+
+    const { description } = footerContent[t]
+
+    return (
+        <>
+            <footer className={s.footer} >
+                <div>
+                    <h3> {description} <strong>Fentos</strong></h3>
+                </div>
+                <a target='_blank' href='https://github.com/fentosv' rel='noopener noreferrer'>
+                    <GitHub />
+                </a>
+            </footer>
+        </>
+    );
+}
+
+export default Footer;

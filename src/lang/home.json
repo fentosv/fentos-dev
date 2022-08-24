@@ -1,0 +1,14 @@
+{
+    "en": {
+        "title": "Home",
+        "content": {
+            "title": "Title, but in english"
+        }
+    },
+    "es": {
+        "title": "Inicio",
+        "content": {
+            "title": "Título, pero en castellano"
+        }
+    }
+}
