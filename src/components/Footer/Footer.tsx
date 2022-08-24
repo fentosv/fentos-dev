@@ -25,12 +25,15 @@ function Footer() {
     return (
         <>
             <footer className={s.footer} >
-                <div>
-                    <h3> {description} <strong>Fentos</strong></h3>
+                <div className={s.footer_container}>
+
+                    <div>
+                        <h3> {description} <strong>Fentos</strong></h3>
+                    </div>
+                    <a target='_blank' href='https://github.com/fentosv' rel='noopener noreferrer'>
+                        <GitHub />
+                    </a>
                 </div>
-                <a target='_blank' href='https://github.com/fentosv' rel='noopener noreferrer'>
-                    <GitHub />
-                </a>
             </footer>
         </>
     );

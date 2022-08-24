@@ -4,10 +4,15 @@
   padding: 2rem;
   background-color: var(--color-dark-1);
   color: var(--color-light-2);
+}
+
+.footer_container {
   display: flex;
+  margin: auto;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   user-select: none;
+  width: var(--navbar-width);
 
   div {
     display: flex;
