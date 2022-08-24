@@ -1,0 +1,14 @@
+{
+    "en": {
+        "title": "Test",
+        "content": {
+            "title": "Title, but in english"
+        }
+    },
+    "es": {
+        "title": "Prueba",
+        "content": {
+            "title": "Título, pero en castellano"
+        }
+    }
+}

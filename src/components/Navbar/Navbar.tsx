@@ -17,11 +17,17 @@ const navbarContent = {
     "en": {
         about: {
             title: "About"
+        },
+        test: {
+            title: "Test"
         }
     },
     "es": {
         about: {
             title: "Información"
+        },
+        test: {
+            title: "Prueba"
         }
     }
 };
@@ -34,7 +40,7 @@ function Navbar({ navbarClass }: Props) {
 
     const t = locale === 'es' ? 'es' : 'en';
 
-    const { about } = navbarContent[t]
+    const { about, test } = navbarContent[t]
 
 
     return (
@@ -77,18 +83,18 @@ function Navbar({ navbarClass }: Props) {
                             {about.title}
                         </a>
                     </Link>
-                    <Link href='/about'>
+                    <Link href='/test'>
                         <a
 
                             className={
                                 classnames(
                                     s.navlink,
                                     {
-                                        [s['navlink--active']]: router.pathname == '/about'
+                                        [s['navlink--active']]: router.pathname == '/test'
                                     }
                                 )}
                         >
-                            Test
+                            {test.title}
                         </a>
                     </Link>
 
