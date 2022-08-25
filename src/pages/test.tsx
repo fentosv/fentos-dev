@@ -19,7 +19,7 @@ const Test: NextPage = () => {
   return (
     <Layout>
       <Head>
-        <title>Fentos | {title}</title>
+        <title>{`Fentos | ${title}`}</title>
         <meta name="description" content="Fentos' project" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

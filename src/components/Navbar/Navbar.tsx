@@ -5,6 +5,8 @@ import Image from 'next/future/image'
 import { useRouter } from 'next/router';
 import classnames from 'classnames-creator'
 import Languages from '@components/Languages';
+import ThemeSwitcher from '@components/ThemeSwitcher';
+
 
 import logo from '@public/logo.svg';
 import s from './Navbar.module.scss'
@@ -99,6 +101,7 @@ function Navbar({ navbarClass }: Props) {
                     </Link>
 
                     <Languages></Languages>
+                    <ThemeSwitcher></ThemeSwitcher>
 
 
 

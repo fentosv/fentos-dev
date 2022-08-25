@@ -26,6 +26,14 @@
 }
 
 
+[data-theme="light"] {
+    --color-light-1: #a4a4a4;
+    --color-light-2: #121212;
+
+    --color-dark-1: #ffff;
+    --color-dark-2: rgb(222, 222, 222);
+}
+
 @media only screen and (max-width: sizes.$desktop) {
     .section {}
 }
