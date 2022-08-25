@@ -44,7 +44,6 @@ function Navbar({ navbarClass }: Props) {
 
     const { about, test } = navbarContent[t]
 
-
     return (
         <>
             <header
@@ -59,7 +58,7 @@ function Navbar({ navbarClass }: Props) {
                 <div className={s.navbar_container}>
 
                     <Link href='/'>
-                        <div>
+                        <a>
                             <Image
                                 className={s.navbar_icon_img}
                                 src={logo}
@@ -67,12 +66,12 @@ function Navbar({ navbarClass }: Props) {
                                 title='Logo'
                                 priority
                             />
-                        </div>
+                        </a>
                     </Link>
 
                     <Link href='/about'>
                         {/* Use bracket notation for BEM implementation */}
-                        <div
+                        <a
                             title={about.title}
                             className={
                                 classnames(
@@ -83,10 +82,10 @@ function Navbar({ navbarClass }: Props) {
                                 )}
                         >
                             {about.title}
-                        </div>
+                        </a>
                     </Link>
                     <Link href='/test'>
-                        <div
+                        <a
                             className={
                                 classnames(
                                     s.navlink,
@@ -96,13 +95,11 @@ function Navbar({ navbarClass }: Props) {
                                 )}
                         >
                             {test.title}
-                        </div>
+                        </a>
                     </Link>
 
                     <Languages></Languages>
                     <ThemeSwitcher></ThemeSwitcher>
-
-
 
                 </div >
             </header >

@@ -3,22 +3,18 @@ import classnames from 'classnames-creator'
 import styles from './Languages.module.scss'
 import { useRouter } from 'next/router';
 
-
-interface Props {
-    test?: boolean;
-}
-
 const d: { [key: string]: string } = {
     'es': 'ES',
     'en': 'EN',
 }
 
-export default function Section({ test = false, ...props }: Props) {
+export default function Languages(): JSX.Element {
 
     const router = useRouter()
 
     const { pathname, asPath, query, locale, locales, defaultLocale } = router
 
+    // Changing only the locale prop
     const changeLocale = (nextLocale: string) => {
         router.push({
             pathname,
@@ -51,19 +47,9 @@ export default function Section({ test = false, ...props }: Props) {
                         <div
                             className={styles.wave}
                         >{d[lang]}</div>
-
                     </div>
-
-                    // return <div
-                    //     key={lang}
-                    //     onClick={() => changeLocale(lang)}
-                    //     className={itemStyle}
-                    // >
-                    //     {d[lang]}
-                    // </div>
                 })
             }
-
         </section>
     )
 }
