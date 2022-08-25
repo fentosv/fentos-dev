@@ -8,7 +8,6 @@ import type { RootState } from '@app/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { setTheme } from '@app/themeSlice'
 
-
 interface Props {
     test?: boolean;
 }
@@ -32,33 +31,27 @@ export default function Section({ test = false, ...props }: Props) {
     const theme = useSelector((state: RootState) => state.theme.value)
 
     useEffect(() => {
-        let localTheme = window.localStorage.getItem('theme');
+        const localTheme = window.localStorage.getItem('theme');
+        if (!localTheme) return
+
         const isDark = localTheme === 'dark' ? false : true;
-        console.log('local theme:', localTheme, isDark)
 
-        if (localTheme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            window.localStorage.setItem('theme', theme);
-            dispatch(setTheme(theme))
+        document.documentElement.setAttribute('data-theme', localTheme);
+        dispatch(setTheme(localTheme))
 
-            setChecked(isDark)
-        };
+        setChecked(isDark)
+
     }, [theme, dispatch])
-
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         setChecked(e.target.checked);
 
-        const theme = e.target.checked === true ? 'light' : 'dark';
-
-        console.log('cambio a:', theme);
-
+        const theme = e.target.checked === false ? 'dark' : 'light'
         document.documentElement.setAttribute('data-theme', theme);
         window.localStorage.setItem('theme', theme);
         dispatch(setTheme(theme))
     }
-
 
     return (
         <div className={s.theme_switch_wrapper}>
