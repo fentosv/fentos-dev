@@ -23,12 +23,11 @@ const themeSwitcherContent = {
     }
 };
 
-export default function ThemeSwitcher({ test = false, ...props }: Props) {
+export default function Section({ test = false, ...props }: Props) {
 
     const dispatch = useDispatch()
     // false: dark // true: light
     const [isChecked, setChecked] = useState<boolean>(false);
-    // Pasar esto a un único estado de redux: isDark
     const theme = useSelector((state: RootState) => state.theme.value)
 
     // // Change atrib and setTheme based on localStorage
