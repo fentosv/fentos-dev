@@ -47,7 +47,7 @@
 }
 
 input:checked+.slider {
-    background-color: slateblue;
+    background-color: var(--color-brand-primary-1);
 }
 
 input:checked+.slider:before {

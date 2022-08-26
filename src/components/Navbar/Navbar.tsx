@@ -60,8 +60,8 @@ function Navbar({ navbarClass }: Props) {
                             <Image
                                 className={s.navbar_icon_img}
                                 src={logo}
-                                alt='Logo'
-                                title='Logo'
+                                alt='Fentos logo'
+                                title='Fentos'
                                 priority
                             />
                         </a>
