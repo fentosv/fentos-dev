@@ -1,0 +1,106 @@
+@use '@sass_settings/sizes.scss';
+
+.icon-container {
+    position: relative;
+    font-size: 1.5rem;
+
+    &:before {
+        content: "";
+        position: absolute;
+        border: 2px solid var(--color-light-2);
+        width: 1px;
+        height: 1px;
+        padding: 1.2rem;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            filter: brightness(1.7);
+            animation: spin 1.5s linear infinite;
+            color: var(--color-dark-1);
+        }
+
+        &:hover:before {
+            z-index: -1;
+            background-color: var(--color-light-2);
+            animation: born 0.5s linear;
+        }
+    }
+}
+
+// Removes extra height from the svg contained in a div
+.svg {
+    display: block;
+}
+
+.close {
+    color: var(--color-light-1);
+    font-size: 1.6rem;
+    stroke-width: 2px;
+
+    @media (hover: hover) {
+        &:hover {
+            filter: brightness(1.3);
+        }
+    }
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    transition: transform .3s;
+    z-index: 9999999; //I hope you don't do this
+}
+
+.modal-content {
+    background-color: var(--color-dark-1);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: toast-in-modal .7s;
+}
+
+
+@keyframes toast-in-modal {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(100%)
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes born {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
