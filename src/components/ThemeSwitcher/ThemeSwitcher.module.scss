@@ -4,11 +4,7 @@
 .theme_switch_wrapper {
     display: flex;
     align-items: center;
-
-    em {
-        margin-left: 10px;
-        font-size: 1rem;
-    }
+    gap: 0.4rem;
 }
 
 .theme_switch {

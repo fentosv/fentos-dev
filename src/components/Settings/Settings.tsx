@@ -5,8 +5,6 @@ import Languages from '@components/Languages';
 import ThemeSwitcher from '@components/ThemeSwitcher';
 import { CgClose } from 'react-icons/cg';
 import { FiSettings } from 'react-icons/fi';
-import { GoSettings } from 'react-icons/go';
-import { AiFillSetting } from 'react-icons/ai';
 
 
 export default function Button(): JSX.Element {
@@ -36,17 +34,6 @@ export default function Button(): JSX.Element {
                     className={styles.svg}
                 />
             </div>
-
-            {/* <FiSettings
-                className={styles['main-icon']}
-                onClick={() => setIsOpen(true)}
-            /> */}
-
-            {/* <AiFillSetting
-                className={styles['main-icon']}
-                onClick={() => setIsOpen(true)}
-            /> */}
-
 
             {isOpen &&
 
