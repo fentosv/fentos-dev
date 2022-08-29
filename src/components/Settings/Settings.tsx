@@ -5,9 +5,29 @@ import Languages from '@components/Languages';
 import ThemeSwitcher from '@components/ThemeSwitcher';
 import { CgClose } from 'react-icons/cg';
 import { FiSettings } from 'react-icons/fi';
+import { useRouter } from 'next/router';
 
+const settingsContent = {
+    "en": {
+        header: 'Settings',
+        theme_switcher: 'Enable dark mode',
+
+    },
+    "es": {
+        header: 'Ajustes',
+        theme_switcher: 'Activar modo oscuro',
+    }
+};
 
 export default function Button(): JSX.Element {
+
+    const router = useRouter()
+    const { pathname, asPath, query, locale, locales, defaultLocale } = router
+
+    const t = locale === 'es' ? 'es' : 'en';
+
+    const { header, theme_switcher } = settingsContent[t]
+
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -43,14 +63,20 @@ export default function Button(): JSX.Element {
                     className={styles.modal}
                 >
                     <div className={styles['modal-content']}>
-
-                        <CgClose
-                            aria-label='close modal'
-                            className={styles.close}
-                            onClick={(e) => { closeModal(e) }}
-                        />
-                        <Languages />
-                        <ThemeSwitcher />
+                        <div className={styles['modal-header']}>
+                            <h1 className={styles['modal-title']}>
+                                {header}
+                            </h1>
+                            <CgClose
+                                aria-label='close modal'
+                                className={styles.close}
+                                onClick={(e) => { closeModal(e) }}
+                            />
+                        </div>
+                        <div className={styles['modal-body']}>
+                            <Languages />
+                            <ThemeSwitcher text={theme_switcher} />
+                        </div>
                     </div>
                 </div>
             }

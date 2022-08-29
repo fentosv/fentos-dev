@@ -1,29 +1,22 @@
 import classnames from 'classnames-creator'
 
 import s from './ThemeSwitcher.module.scss'
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import type { RootState } from '@app/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { setTheme } from '@app/themeSlice'
 
+import ToggleSwitch from '@components/ToggleSwitch'
+
 interface Props {
-    test?: boolean;
+    text: string;
 }
 
-const themeSwitcherContent = {
-    "en": {
-        light: 'light',
-        dark: 'dark'
-    },
-    "es": {
-        light: 'claro',
-        dark: 'oscuro'
-    }
-};
-
-export default function ThemeSwitcher({ test = false, ...props }: Props) {
+// Component names: bar and lever
+export default function ThemeSwitcher({
+    text
+}: Props) {
 
     const dispatch = useDispatch()
     // false: dark // true: light
@@ -33,47 +26,39 @@ export default function ThemeSwitcher({ test = false, ...props }: Props) {
     // Pasar esto a un único estado de redux: isDark
 
     // Change atrib and setTheme based on localStorage
+    // useEffect(() => {
+    //     const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    //     if (defaultDark) window.localStorage.setItem('theme', 'dark')
+
+    //     const localTheme = window.localStorage.getItem('theme')
+    //     if (!localTheme) return
+
+    //     const isDark = localTheme === 'dark' ? false : true;
+
+    //     document.documentElement.setAttribute('data-theme', localTheme)
+    //     dispatch(setTheme(localTheme))
+
+    //     setChecked(isDark)
+
+    // }, [theme, dispatch])
+
     useEffect(() => {
-
-        const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (defaultDark) window.localStorage.setItem('theme', 'dark')
-
-        const localTheme = window.localStorage.getItem('theme')
-        if (!localTheme) return
-
-        const isDark = localTheme === 'dark' ? false : true;
-
-        document.documentElement.setAttribute('data-theme', localTheme)
-        dispatch(setTheme(localTheme))
-
-        setChecked(isDark)
-
-    }, [theme, dispatch])
-
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-        setChecked(e.target.checked);
-
-        const theme = e.target.checked === false ? 'dark' : 'light'
+        const theme = isChecked === false ? 'dark' : 'light'
         document.documentElement.setAttribute('data-theme', theme)
         window.localStorage.setItem('theme', theme)
         dispatch(setTheme(theme))
-    }
+    }, [isChecked, theme, dispatch])
+
 
     return (
-        <div className={s.theme_switch_wrapper}>
-            <span aria-hidden={true}>🌙</span>
-            <label className={s.theme_switch} htmlFor="checkbox">
-                <input
-                    type="checkbox"
-                    id="checkbox"
-                    onChange={handleChange}
-                    checked={isChecked}
-                />
-                <div className={`${s.slider} ${s.round}`}></div>
-            </label >
-            <span aria-hidden={true}>☀️</span>
+        <div className={s.container}>
+            <h3 className={s.title}>{text}</h3>
+
+            <ToggleSwitch
+                checked={isChecked}
+                setChecked={setChecked}
+            />
+
         </div >
     )
 }

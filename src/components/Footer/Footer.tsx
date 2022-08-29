@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 
 
 const footerContent = {
-    "en-US": {
+    "en": {
         description: "Developed by"
     },
-    "es-ES": {
+    "es": {
         description: "Desarrollado por"
     }
 };
@@ -18,7 +18,7 @@ function Footer() {
     const router = useRouter()
     const { pathname, asPath, query, locale, locales, defaultLocale } = router
 
-    const t = locale === 'es-ES' ? 'es-ES' : 'en-US';
+    const t = locale === 'es' ? 'es' : 'en';
 
     const { description } = footerContent[t]
 

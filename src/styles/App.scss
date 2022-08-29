@@ -33,3 +33,16 @@ body {
   gap: 2rem;
   padding: 1.5rem 0;
 }
+
+// TODO Testing purpouses
+.box-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  div {
+    text-align: center;
+    border: 1px solid black;
+    padding: 6rem 0;
+  }
+}

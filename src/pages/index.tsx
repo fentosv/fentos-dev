@@ -17,7 +17,6 @@ const Home: NextPage = () => {
 
   const { title, content } = homeContent[t]
 
-
   return (
     <Layout>
 
@@ -27,10 +26,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <Section>
         <h1>{title}</h1>
         <div>{content.title}</div>
+
+        <div className='box-container'>
+          <div className="box1">Box 1</div>
+          <div className="box2">Box 2</div>
+          <div className="box3">Box 3</div>
+          <div className="box4">Box 4</div>
+        </div>
       </Section>
 
     </Layout>

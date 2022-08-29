@@ -10,7 +10,7 @@
         border: 2px solid var(--color-light-2);
         width: 1px;
         height: 1px;
-        padding: 1.2rem;
+        padding: 1rem;
         border-radius: 50%;
         top: 50%;
         left: 50%;
@@ -27,7 +27,7 @@
         &:hover:before {
             z-index: -1;
             background-color: var(--color-light-2);
-            animation: born 0.5s linear;
+            animation: appear 0.5s linear;
         }
     }
 }
@@ -39,9 +39,8 @@
 
 .close {
     color: var(--color-light-1);
-    font-size: 1.6rem;
+    font-size: 1rem;
     stroke-width: 2px;
-    align-self: flex-end;
 
     @media (hover: hover) {
         &:hover {
@@ -49,7 +48,6 @@
         }
     }
 }
-
 
 .modal {
     position: fixed;
@@ -68,7 +66,7 @@
 
 .modal-content {
     background-color: var(--color-dark-1);
-    padding: 1rem;
+    padding: 0.5rem 0.7rem;
     border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -78,6 +76,26 @@
     gap: 0.5rem;
 }
 
+.modal-header {
+    color: var(--color-light-1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.modal-title {
+    // display: block;
+    font-size: 1.3rem;
+    height: 2rem; // vertical align center text needs this
+    user-select: none;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
 @keyframes toast-in-modal {
     from {
@@ -99,7 +117,7 @@
     }
 }
 
-@keyframes born {
+@keyframes appear {
     from {
         opacity: 0;
     }
