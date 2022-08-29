@@ -11,11 +11,12 @@ import { setTheme } from '@app/themeSlice'
 import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 
-// Redux functions need to be used in an element wrapped by <Provider/>, so we can wrap the app function like this
+// Redux functions need to be used inside an element wrapped by <Provider/>, so we can wrap the _app like this
 function Wrapper({ children }: { children: React.ReactNode }): JSX.Element {
 
   const dispatch = useDispatch()
   useEffect(() => {
+    console.log('UseEffect app')
     const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (defaultDark) window.localStorage.setItem('theme', 'dark')
 
@@ -27,7 +28,7 @@ function Wrapper({ children }: { children: React.ReactNode }): JSX.Element {
     document.documentElement.setAttribute('data-theme', localTheme)
     dispatch(setTheme(localTheme))
 
-  }, [])
+  }, [dispatch])
 
   return (
     <>{children}</>
