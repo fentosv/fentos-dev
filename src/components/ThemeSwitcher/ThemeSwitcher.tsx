@@ -1,13 +1,13 @@
 import classnames from 'classnames-creator'
 
 import s from './ThemeSwitcher.module.scss'
-import { useEffect, useState } from 'react';
-
-import type { RootState } from '@app/store'
+import { useState } from 'react';
+import { RootState } from '@app/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { setTheme } from '@app/themeSlice'
 
 import ToggleSwitch from '@components/ToggleSwitch'
+import getTheme from '@app/select';
 
 interface Props {
     text: string;
@@ -19,36 +19,16 @@ export default function ThemeSwitcher({
 }: Props) {
 
     const dispatch = useDispatch()
-    // false: dark // true: light
-    const theme = useSelector((state: RootState) => state.theme.value)
+    const theme = useSelector((state: RootState) => getTheme(state))
 
-    const [isChecked, setChecked] = useState<boolean>(theme !== 'dark' ? true : false);
-    // Pasar esto a un único estado de redux: isDark
+    // true: dark // false: light
+    const [isChecked, setChecked] = useState<boolean>(theme === 'dark' ? true : false);
 
-    // Change atrib and setTheme based on localStorage
-    // useEffect(() => {
-    //     const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    //     if (defaultDark) window.localStorage.setItem('theme', 'dark')
-
-    //     const localTheme = window.localStorage.getItem('theme')
-    //     if (!localTheme) return
-
-    //     const isDark = localTheme === 'dark' ? false : true;
-
-    //     document.documentElement.setAttribute('data-theme', localTheme)
-    //     dispatch(setTheme(localTheme))
-
-    //     setChecked(isDark)
-
-    // }, [theme, dispatch])
-
-    useEffect(() => {
-        const theme = isChecked === false ? 'dark' : 'light'
-        document.documentElement.setAttribute('data-theme', theme)
-        window.localStorage.setItem('theme', theme)
-        dispatch(setTheme(theme))
-    }, [isChecked, theme, dispatch])
-
+    const handleChange = () => {
+        setChecked(!isChecked)
+        const newTheme = !isChecked === true ? 'dark' : 'light'
+        dispatch(setTheme(newTheme))
+    }
 
     return (
         <div className={s.container}>
@@ -56,7 +36,7 @@ export default function ThemeSwitcher({
 
             <ToggleSwitch
                 checked={isChecked}
-                setChecked={setChecked}
+                onChange={handleChange}
             />
 
         </div >

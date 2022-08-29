@@ -42,14 +42,17 @@
     }
 
     // Switch on
-    input:checked {
-        +label {
-            background-color: var(--switch-bar-on-background-color);
-        }
+    input {
 
-        +label:after {
-            transform: translateX(calc(var(--switch-bar-width) - var(--switch-button-space) - var(--switch-button-size)));
-            background-color: var(--switch-lever-on-background-color);
+        &:checked {
+            +label {
+                background-color: var(--switch-bar-on-background-color);
+            }
+
+            +label:after {
+                transform: translateX(calc(var(--switch-bar-width) - var(--switch-button-space) - var(--switch-button-size)));
+                background-color: var(--switch-lever-on-background-color);
+            }
         }
     }
 }

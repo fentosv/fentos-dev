@@ -4,7 +4,7 @@ import s from './ToggleSwitch.module.scss'
 
 import React from 'react'
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     barWidth?: string,
     barHeight?: string,
     leverSize?: string,
@@ -17,8 +17,8 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     activeShadow?: string,
     borderRadious?: string,
     checked: boolean,
-    setChecked: React.Dispatch<React.SetStateAction<boolean>>,
     className?: string,
+    onChange: React.ChangeEventHandler<HTMLInputElement>
 }
 
 // Component names: bar and lever
@@ -36,7 +36,8 @@ export default function ToggleSwitch({
     activeShadow = '0 0 9px 1px #3d9e3d',
     checked,
     className,
-    setChecked
+    onChange,
+    ...props
 
 }: Props) {
 
@@ -54,11 +55,6 @@ export default function ToggleSwitch({
         "--border-radious": borderRadious,
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("Check");
-        setChecked(e.target.checked);
-    }
-
     const mainClass = classnames(
         s.switch,
         className
@@ -69,7 +65,14 @@ export default function ToggleSwitch({
             className={mainClass}
             style={cssVariables as React.CSSProperties}
         >
-            <input type="checkbox" name="switch" id="switch" onChange={handleChange} checked={checked} />
+            <input
+                checked={checked}
+                id="switch"
+                name="switch"
+                onChange={onChange}
+                type="checkbox"
+                {...props}
+            />
             <label htmlFor="switch"></label>
         </div>
     )
