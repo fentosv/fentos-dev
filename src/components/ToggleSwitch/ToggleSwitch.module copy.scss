@@ -1,13 +1,4 @@
 .switch {
-
-    // TODO: 
-    // Reorganizar sass en torno a estructura (papel)
-    // Dar a lever-on una sombra 
-    // Dar a lever-off una sombra 
-    // Dar a bar-on una sombra
-    // Dar a bar-off una sombra
-    // Mirar si en el calc de top 50% puedo añadir left 50% y hacer lo mismo
-
     --switch-button-space: calc((var(--switch-bar-height) - var(--switch-button-size))/2);
     display: flex;
     align-items: center;
@@ -17,6 +8,7 @@
         height: 0;
         visibility: hidden;
     }
+
 
     label {
         display: block;
@@ -90,6 +82,8 @@
             +label:hover {
                 cursor: not-allowed;
             }
+
+
 
         }
     }

@@ -14,6 +14,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     leverOffColor?: string,
     barShadow?: string,
     leverShadow?: string,
+    leverActiveShadow?: string,
     activeShadow?: string,
     borderRadious?: string,
     checked: boolean,
@@ -23,23 +24,27 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 
 // Component names: bar and lever
 export default function ToggleSwitch({
-    barWidth = '3.8rem',
-    barHeight = '2.2rem',
+    barWidth = '3rem',
+    barHeight = '1rem',
     leverSize = '1.7rem',
     borderRadious = '10rem',
-    barOnColor = 'seagreen',
-    barOffColor = '#c3c3c3',
-    leverOnColor = 'white',
+    leverOnColor = '#6200ee',
+    barOnColor = '#a472ea',
     leverOffColor = 'white',
+    barOffColor = '#c3c3c3',
     barShadow,
     leverShadow,
-    activeShadow = '0 0 9px 1px #3d9e3d',
+    leverActiveShadow = '0 0 0 10px #9a61e946',
+    // leverActiveShadow = '0 0 9px 1px #9a61e9',
+    activeShadow,
     checked,
     className,
     onChange,
-    ...props
+    ...rest
 
 }: Props) {
+    const name = Math.floor(Math.random() * 1000000000).toString()
+    console.log(name);
 
     const cssVariables = {
         "--switch-bar-width": barWidth,
@@ -51,6 +56,7 @@ export default function ToggleSwitch({
         "--switch-lever-off-background-color": leverOffColor,
         "--switch-bar-shadow": barShadow,
         "--switch-lever-shadow": leverShadow,
+        "--switch-lever-active-shadow": leverActiveShadow,
         "--switch-active-shadow": activeShadow,
         "--border-radious": borderRadious,
     }
@@ -67,13 +73,13 @@ export default function ToggleSwitch({
         >
             <input
                 checked={checked}
-                id="switch"
-                name="switch"
+                id={name}
+                name={name}
                 onChange={onChange}
                 type="checkbox"
-                {...props}
+                {...rest}
             />
-            <label htmlFor="switch"></label>
+            <label htmlFor={name}></label>
         </div>
     )
 }
