@@ -19,15 +19,14 @@
 
     @media (hover: hover) {
         &:hover {
-            filter: brightness(1.7);
             animation: spin 1.5s linear infinite;
             color: var(--color-dark-1);
-        }
 
-        &:hover:before {
-            z-index: -1;
-            background-color: var(--color-light-2);
-            animation: appear 0.5s linear;
+            &:before {
+                z-index: -1;
+                background-color: var(--color-light-2);
+                animation: appear 0.5s linear;
+            }
         }
     }
 }
@@ -66,7 +65,7 @@
 
 .modal-content {
     background-color: var(--color-dark-1);
-    padding: 0.5rem 0.7rem;
+    padding: 1rem 1.7rem;
     border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -81,7 +80,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .modal-title {

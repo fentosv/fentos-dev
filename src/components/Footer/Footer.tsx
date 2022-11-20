@@ -4,7 +4,6 @@ import s from './Footer.module.scss'
 import GitHub from '@components/icons/GitHub';
 import { useRouter } from 'next/router';
 
-
 const footerContent = {
     "en": {
         description: "Developed by"

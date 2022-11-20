@@ -34,6 +34,19 @@
     --color-dark-2: rgb(222, 222, 222);
 }
 
-@media only screen and (max-width: sizes.$desktop) {
-    .section {}
+// TODO
+// Mobile first order
+:root {
+
+    @media (min-width: sizes.$mobile) {
+        --color-brand-secondary-11: red;
+    }
+
+    @media (min-width: sizes.$tablet) {
+        --color-brand-secondary-11: orange;
+    }
+
+    @media (min-width: sizes.$desktop) {
+        --color-brand-secondary-11: blue;
+    }
 }

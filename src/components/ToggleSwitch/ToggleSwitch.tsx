@@ -8,14 +8,28 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     barWidth?: string,
     barHeight?: string,
     leverSize?: string,
+
     barOnColor?: string,
     barOffColor?: string,
     leverOnColor?: string,
     leverOffColor?: string,
-    barShadow?: string,
-    leverShadow?: string,
+
+    // barShadow?: string,
+    // leverShadow?: string,
+
+    barOnShadow?: string,
+    barOffShadow?: string,
+    leverOnShadow?: string,
+    leverOffShadow?: string,
+
+    barHoverShadow?: string,
+    barFocusedShadow?: string,
+    barActiveShadow?: string,
+
+    leverHoverShadow?: string,
+    leverFocusedShadow?: string,
     leverActiveShadow?: string,
-    activeShadow?: string,
+
     borderRadious?: string,
     checked: boolean,
     className?: string,
@@ -26,17 +40,27 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 export default function ToggleSwitch({
     barWidth = '3rem',
     barHeight = '1rem',
-    leverSize = '1.7rem',
-    borderRadious = '10rem',
-    leverOnColor = '#6200ee',
+    leverSize = '1.6rem',
+
     barOnColor = '#a472ea',
+    leverOnColor = '#6200ee',
+    barOffColor = '#808080',
     leverOffColor = 'white',
-    barOffColor = '#c3c3c3',
-    barShadow,
-    leverShadow,
-    leverActiveShadow = '0 0 0 10px #9a61e946',
-    // leverActiveShadow = '0 0 9px 1px #9a61e9',
-    activeShadow,
+
+    barOnShadow,
+    leverOnShadow,
+    barOffShadow,
+    leverOffShadow = '0 0 10px 1px #b7b9b5',
+
+    barHoverShadow,
+    barFocusedShadow,
+    barActiveShadow,
+
+    leverHoverShadow = '0 0 0 10px #9a61e946',
+    leverFocusedShadow,
+    leverActiveShadow = '0 0 0 10px #9a61e98b',
+
+    borderRadious = '10rem',
     checked,
     className,
     onChange,
@@ -44,20 +68,30 @@ export default function ToggleSwitch({
 
 }: Props) {
     const name = Math.floor(Math.random() * 1000000000).toString()
-    console.log(name);
 
     const cssVariables = {
         "--switch-bar-width": barWidth,
         "--switch-bar-height": barHeight,
         "--switch-button-size": leverSize,
+
         "--switch-bar-on-background-color": barOnColor,
         "--switch-bar-off-background-color": barOffColor,
         "--switch-lever-on-background-color": leverOnColor,
         "--switch-lever-off-background-color": leverOffColor,
-        "--switch-bar-shadow": barShadow,
-        "--switch-lever-shadow": leverShadow,
+
+        "--switch-bar-on-shadow": barOnShadow,
+        "--switch-bar-off-shadow": barOffShadow,
+        "--switch-lever-on-shadow": leverOnShadow,
+        "--switch-lever-off-shadow": leverOffShadow,
+
+        "--switch-bar-hover-shadow": barHoverShadow,
+        "--switch-bar-focused-shadow": barFocusedShadow,
+        "--switch-bar-active-shadow": barActiveShadow,
+
+        "--switch-lever-hover-shadow": leverHoverShadow,
+        "--switch-lever-focused-shadow": leverFocusedShadow,
         "--switch-lever-active-shadow": leverActiveShadow,
-        "--switch-active-shadow": activeShadow,
+
         "--border-radious": borderRadious,
     }
 
